@@ -10,6 +10,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.ZonedDateTime;
+import java.util.Date;
+
 @Entity(name = "users")
 @Setter
 @Getter
@@ -22,8 +25,16 @@ public class User {
 
     @Column(nullable = false)
     private String username;
+    @Column(nullable = false)
     private String password;
+    @Column(nullable = false, unique = true)
     private String email;
+    @Column(nullable = false, unique = true)
     private String phone;
+    @Column(nullable = false)
     private Role role;
+
+    @Column(updatable = false)
+    private Date createdAt;
+    private Date updatedAt;
 }
